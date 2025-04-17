@@ -103,11 +103,13 @@ export default class DashWebSocket extends Component {
 
     componentWillUnmount() {
         // Clean up (close the connection).
-        this.client.onopen = null;
-        this.client.onclose = null;
-        this.client.onerror = null;
-        this.client.onmessage = null;
-        this.client.close();
+        if (this.client) {
+            this.client.onopen = null;
+            this.client.onclose = null;
+            this.client.onerror = null;
+            this.client.onmessage = null;
+            this.client.close();
+        }
     }
 
     render() {
